@@ -27,6 +27,12 @@ using System.Reflection;
 using Autofac.Builder;
 using Autofac.Features.Scanning;
 using Microsoft.AspNet.SignalR.Hubs;
+using Castle.DynamicProxy;
+using System;
+using System.Linq;
+using System.Globalization;
+using Microsoft.AspNet.SignalR;
+using System.Collections.Generic;
 
 namespace Autofac.Integration.SignalR
 {
@@ -48,5 +54,31 @@ namespace Autofac.Integration.SignalR
                 .Where(t => typeof(IHub).IsAssignableFrom(t))
                 .ExternallyOwned();
         }
-    }
+
+		static readonly ProxyGenerator _proxyGenerator = new ProxyGenerator();
+
+		/// <summary>
+		/// Registers a <see cref="Hub"/> class whose dependencies are resolved within a lifetime scope.
+		/// Any components that are registered with InstancePerLifetimeScope will be created for
+		/// and disposed after every hub operation, since SignalR creates a new instance of the hub for
+		/// each operation.
+		/// </summary>
+		/// <typeparam name="T">The <see cref="Hub"/> class to be registered.</typeparam>
+		/// <param name="builder">The container builder.</param>
+		public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle>
+			RegisterHubWithLifetimeScope<T>(this ContainerBuilder builder) where T : Hub
+		{
+			var options = new ProxyGenerationOptions { Hook = new HubDisposalProxyGenerationHook() };
+			var proxyType = _proxyGenerator.ProxyBuilder.CreateClassProxyType(typeof(T), new Type[] { }, options);
+			builder.RegisterType(proxyType).ExternallyOwned();
+
+			return builder.Register(ctx =>
+			{
+				var lifetimeScope = ctx.Resolve<ILifetimeScope>();
+				var newScope = lifetimeScope.BeginLifetimeScope();
+				var interceptor = new HubDisposalInterceptor(newScope);
+				return (T)newScope.Resolve(proxyType, new TypedParameter(typeof(IInterceptor[]), new IInterceptor[] { interceptor }));
+			}).As<T>().ExternallyOwned();
+		}
+	}
 }
