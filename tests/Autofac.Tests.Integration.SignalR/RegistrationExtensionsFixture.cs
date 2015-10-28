@@ -40,7 +40,7 @@ namespace Autofac.Tests.Integration.SignalR
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterConnections(Assembly.GetExecutingAssembly());
+            builder.RegisterPersistentConnections(Assembly.GetExecutingAssembly());
 
             var container = builder.Build();
 
@@ -51,7 +51,7 @@ namespace Autofac.Tests.Integration.SignalR
         public void ConnectionRegistrationsAreExternallyOwned()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterConnections(Assembly.GetExecutingAssembly());
+            builder.RegisterPersistentConnections(Assembly.GetExecutingAssembly());
             var container = builder.Build();
 
             var service = new TypedService(typeof(TestConnection));

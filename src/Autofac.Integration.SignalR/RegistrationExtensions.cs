@@ -41,12 +41,12 @@ namespace Autofac.Integration.SignalR
         /// Register types that implement <see cref="IHub"/> in the provided assemblies.
         /// </summary>
         /// <param name="builder">The container builder.</param>
-        /// <param name="controllerAssemblies">Assemblies to scan for controllers.</param>
+        /// <param name="assemblies">Assemblies to scan for controllers.</param>
         /// <returns>Registration builder allowing the controller components to be customised.</returns>
         public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle>
-            RegisterHubs(this ContainerBuilder builder, params Assembly[] controllerAssemblies)
+            RegisterHubs(this ContainerBuilder builder, params Assembly[] assemblies)
         {
-            return builder.RegisterAssemblyTypes(controllerAssemblies)
+            return builder.RegisterAssemblyTypes(assemblies)
                 .Where(t => typeof(IHub).IsAssignableFrom(t))
                 .ExternallyOwned();
         }
@@ -55,11 +55,11 @@ namespace Autofac.Integration.SignalR
         /// Register types that implement <see cref="PersistentConnection"/> in the provided assemblies.
         /// </summary>
         /// <param name="builder">The container builder.</param>
-        /// <param name="controllerAssemblies">Assemblies to scan for controllers.</param>
-        /// <returns>Registration builder allowing the controller components to be customised.</returns>
-        public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterConnections(this ContainerBuilder builder, params Assembly[] controllerAssemblies)
+        /// <param name="assemblies">Assemblies to scan for persistent connections.</param>
+        /// <returns>Registration builder allowing the persistent connections components to be customised.</returns>
+        public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterPersistentConnections(this ContainerBuilder builder, params Assembly[] assemblies)
         {
-            return builder.RegisterAssemblyTypes(controllerAssemblies)
+            return builder.RegisterAssemblyTypes(assemblies)
                 .Where(t => typeof(PersistentConnection).IsAssignableFrom(t))
                 .ExternallyOwned();
         }
