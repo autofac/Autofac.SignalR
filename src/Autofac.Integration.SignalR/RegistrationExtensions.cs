@@ -23,9 +23,11 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
 
+using System;
 using System.Reflection;
 using Autofac.Builder;
 using Autofac.Features.Scanning;
+using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 
 namespace Autofac.Integration.SignalR
@@ -46,6 +48,19 @@ namespace Autofac.Integration.SignalR
         {
             return builder.RegisterAssemblyTypes(controllerAssemblies)
                 .Where(t => typeof(IHub).IsAssignableFrom(t))
+                .ExternallyOwned();
+        }
+
+        /// <summary>
+        /// Register types that implement <see cref="PersistentConnection"/> in the provided assemblies.
+        /// </summary>
+        /// <param name="builder">The container builder.</param>
+        /// <param name="controllerAssemblies">Assemblies to scan for controllers.</param>
+        /// <returns>Registration builder allowing the controller components to be customised.</returns>
+        public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterConnections(this ContainerBuilder builder, params Assembly[] controllerAssemblies)
+        {
+            return builder.RegisterAssemblyTypes(controllerAssemblies)
+                .Where(t => typeof(PersistentConnection).IsAssignableFrom(t))
                 .ExternallyOwned();
         }
     }
