@@ -25,18 +25,16 @@
 
 using System;
 using System.Linq;
-using Autofac.Integration.SignalR;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Messaging;
 using Moq;
-using NUnit.Framework;
+using Xunit;
 
 namespace Autofac.Integration.SignalR.Test
 {
-    [TestFixture]
     public class AutofacDependencyResolverFixture
     {
-        [Test]
+        [Fact]
         public void CurrentPropertyExposesTheCorrectResolver()
         {
             var container = new ContainerBuilder().Build();
@@ -44,27 +42,27 @@ namespace Autofac.Integration.SignalR.Test
 
             GlobalHost.DependencyResolver = resolver;
 
-            Assert.That(AutofacDependencyResolver.Current, Is.EqualTo(GlobalHost.DependencyResolver));
+            Assert.Equal(GlobalHost.DependencyResolver, AutofacDependencyResolver.Current);
         }
 
-        [Test]
+        [Fact]
         public void NullLifetimeScopeThrowsException()
         {
             var exception = Assert.Throws<ArgumentNullException>(
                 () => new AutofacDependencyResolver(null));
-            Assert.That(exception.ParamName, Is.EqualTo("lifetimeScope"));
+            Assert.Equal("lifetimeScope", exception.ParamName);
         }
 
-        [Test]
+        [Fact]
         public void ProvidedLifetimeScopeExposed()
         {
             var container = new ContainerBuilder().Build();
             var dependencyResolver = new AutofacDependencyResolver(container);
 
-            Assert.That(dependencyResolver.LifetimeScope, Is.EqualTo(container));
+            Assert.Equal(container, dependencyResolver.LifetimeScope);
         }
 
-        [Test]
+        [Fact]
         public void GetServiceReturnsNullForUnregisteredService()
         {
             var container = new ContainerBuilder().Build();
@@ -72,10 +70,10 @@ namespace Autofac.Integration.SignalR.Test
 
             var service = resolver.GetService(typeof(object));
 
-            Assert.That(service, Is.Null);
+            Assert.Null(service);
         }
 
-        [Test]
+        [Fact]
         public void GetServiceReturnsRegisteredService()
         {
             var builder = new ContainerBuilder();
@@ -85,10 +83,10 @@ namespace Autofac.Integration.SignalR.Test
 
             var service = resolver.GetService(typeof(object));
 
-            Assert.That(service, Is.Not.Null);
+            Assert.NotNull(service);
         }
 
-        [Test]
+        [Fact]
         public void GetServicesReturnsNullForUnregisteredService()
         {
             var container = new ContainerBuilder().Build();
@@ -96,10 +94,10 @@ namespace Autofac.Integration.SignalR.Test
 
             var services = resolver.GetServices(typeof(object));
 
-            Assert.That(services, Is.EqualTo(null));
+            Assert.Null(services);
         }
 
-        [Test]
+        [Fact]
         public void GetServicesReturnsRegisteredService()
         {
             var builder = new ContainerBuilder();
@@ -109,10 +107,10 @@ namespace Autofac.Integration.SignalR.Test
 
             var services = resolver.GetServices(typeof(object));
 
-            Assert.That(services.Count(), Is.EqualTo(1));
+            Assert.Equal(1, services.Count());
         }
 
-        [Test]
+        [Fact]
         public void CanResolveDefaultServices()
         {
             var container = new ContainerBuilder().Build();
@@ -120,10 +118,10 @@ namespace Autofac.Integration.SignalR.Test
 
             var service = resolver.GetService(typeof(IMessageBus));
 
-            Assert.That(service, Is.InstanceOf<IMessageBus>());
+            Assert.IsAssignableFrom<IMessageBus>(service);
         }
 
-        [Test]
+        [Fact]
         public void CanOverrideDefaultServices()
         {
             var builder = new ContainerBuilder();
@@ -133,7 +131,7 @@ namespace Autofac.Integration.SignalR.Test
 
             var service = resolver.GetService(typeof(IMessageBus));
 
-            Assert.That(service, Is.SameAs(messageBus));
+            Assert.Same(messageBus, service);
         }
     }
 }

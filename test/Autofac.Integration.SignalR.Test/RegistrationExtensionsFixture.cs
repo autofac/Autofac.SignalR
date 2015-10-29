@@ -1,15 +1,13 @@
 ﻿using System.Reflection;
 using Autofac.Core;
-using Autofac.Integration.SignalR;
 using Microsoft.AspNet.SignalR;
-using NUnit.Framework;
+using Xunit;
 
 namespace Autofac.Integration.SignalR.Test
 {
-    [TestFixture]
     public class RegistrationExtensionsFixture
     {
-        [Test]
+        [Fact]
         public void RegisterHubsFindHubInterfaces()
         {
             var builder = new ContainerBuilder();
@@ -18,10 +16,10 @@ namespace Autofac.Integration.SignalR.Test
 
             var container = builder.Build();
 
-            Assert.That(container.IsRegistered<TestHub>(), Is.True);
+            Assert.True(container.IsRegistered<TestHub>());
         }
 
-        [Test]
+        [Fact]
         public void HubRegistrationsAreExternallyOwned()
         {
             var builder = new ContainerBuilder();
@@ -32,10 +30,10 @@ namespace Autofac.Integration.SignalR.Test
             IComponentRegistration registration;
             container.ComponentRegistry.TryGetRegistration(service, out registration);
 
-            Assert.That(registration.Ownership, Is.EqualTo(InstanceOwnership.ExternallyOwned));
+            Assert.Equal(InstanceOwnership.ExternallyOwned, registration.Ownership);
         }
 
-        [Test]
+        [Fact]
         public void RegisterConnectionsFindConnectionInterfaces()
         {
             var builder = new ContainerBuilder();
@@ -44,10 +42,10 @@ namespace Autofac.Integration.SignalR.Test
 
             var container = builder.Build();
 
-            Assert.That(container.IsRegistered<TestConnection>(), Is.True);
+            Assert.True(container.IsRegistered<TestConnection>());
         }
 
-        [Test]
+        [Fact]
         public void ConnectionRegistrationsAreExternallyOwned()
         {
             var builder = new ContainerBuilder();
@@ -58,7 +56,7 @@ namespace Autofac.Integration.SignalR.Test
             IComponentRegistration registration;
             container.ComponentRegistry.TryGetRegistration(service, out registration);
 
-            Assert.That(registration.Ownership, Is.EqualTo(InstanceOwnership.ExternallyOwned));
+            Assert.Equal(InstanceOwnership.ExternallyOwned, registration.Ownership);
         }
     }
 
