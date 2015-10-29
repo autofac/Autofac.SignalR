@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Integration.SignalR", "src\Autofac.Integration.SignalR\Autofac.Integration.SignalR.csproj", "{CCC12CB7-6753-4772-9B04-83A0B2554991}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Tests.Integration.SignalR", "tests\Autofac.Tests.Integration.SignalR\Autofac.Tests.Integration.SignalR.csproj", "{C2B5131B-97A1-44D1-9378-0BF3CA3E9513}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Integration.SignalR.Test", "test\Autofac.Integration.SignalR.Test\Autofac.Integration.SignalR.Test.csproj", "{C2B5131B-97A1-44D1-9378-0BF3CA3E9513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
