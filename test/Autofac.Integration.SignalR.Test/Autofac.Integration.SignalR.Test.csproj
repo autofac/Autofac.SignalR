@@ -8,8 +8,8 @@
     <ProjectGuid>{C2B5131B-97A1-44D1-9378-0BF3CA3E9513}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Autofac.Tests.Integration.SignalR</RootNamespace>
-    <AssemblyName>Autofac.Tests.Integration.SignalR</AssemblyName>
+    <RootNamespace>Autofac.Integration.SignalR.Test</RootNamespace>
+    <AssemblyName>Autofac.Integration.SignalR.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
@@ -105,7 +105,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
