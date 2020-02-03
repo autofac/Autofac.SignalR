@@ -1,4 +1,4 @@
-#Autofac.SignalR
+# Autofac.SignalR
 
 SignalR integration for [Autofac](https://autofac.org).
 
