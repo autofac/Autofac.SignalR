@@ -11,6 +11,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © 2014 Autofac Contributors")]
 [assembly: AssemblyDescription("Autofac SignalR integration.")]
 
-[assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.0.0")]
-[assembly: AssemblyInformationalVersion("4.0.0.0")]
+[assembly: AssemblyVersion("5.0.0.0")]
+[assembly: AssemblyFileVersion("5.0.0.0")]
+[assembly: AssemblyInformationalVersion("5.0.0.0")]
