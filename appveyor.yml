@@ -1,11 +1,12 @@
-image:
-  - Visual Studio 2019
-
 environment:
   package_semantic_version: 5.0.0
   assembly_semantic_version: 5.0.0
 
 version: $(package_semantic_version).{build}
+
+skip_tags: true
+
+image: Visual Studio 2019
 
 assembly_info:
   patch: true
