@@ -16,6 +16,7 @@
     <dependencies>
       <dependency id="Autofac" version="[5.0.0, 6.0.0)" />
       <dependency id="Microsoft.AspNet.SignalR.Core" version="2.1.1" />
+      <dependency id="Newtonsoft.Json" version="5.0.1" />
     </dependencies>
   </metadata>
 </package>
