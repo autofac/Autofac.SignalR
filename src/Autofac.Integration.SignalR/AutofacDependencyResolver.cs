@@ -46,10 +46,7 @@ namespace Autofac.Integration.SignalR
         /// </exception>
         public AutofacDependencyResolver(ILifetimeScope lifetimeScope)
         {
-            if (lifetimeScope == null)
-                throw new ArgumentNullException("lifetimeScope");
-
-            _lifetimeScope = lifetimeScope;
+            _lifetimeScope = lifetimeScope ?? throw new ArgumentNullException("lifetimeScope");
         }
 
         /// <summary>

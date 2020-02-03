@@ -27,8 +27,7 @@ namespace Autofac.Integration.SignalR.Test
             var container = builder.Build();
 
             var service = new TypedService(typeof(TestHub));
-            IComponentRegistration registration;
-            container.ComponentRegistry.TryGetRegistration(service, out registration);
+            container.ComponentRegistry.TryGetRegistration(service, out IComponentRegistration registration);
 
             Assert.Equal(InstanceOwnership.ExternallyOwned, registration.Ownership);
         }
@@ -53,8 +52,7 @@ namespace Autofac.Integration.SignalR.Test
             var container = builder.Build();
 
             var service = new TypedService(typeof(TestConnection));
-            IComponentRegistration registration;
-            container.ComponentRegistry.TryGetRegistration(service, out registration);
+            container.ComponentRegistry.TryGetRegistration(service, out IComponentRegistration registration);
 
             Assert.Equal(InstanceOwnership.ExternallyOwned, registration.Ownership);
         }
