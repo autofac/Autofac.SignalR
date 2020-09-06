@@ -107,7 +107,7 @@ namespace Autofac.Integration.SignalR.Test
 
             var services = resolver.GetServices(typeof(object));
 
-            Assert.Equal(1, services.Count());
+            Assert.Single(services);
         }
 
         [Fact]
