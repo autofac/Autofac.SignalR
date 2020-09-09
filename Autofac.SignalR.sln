@@ -11,6 +11,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6801E546-41B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3542D6EC-8CC0-481E-AB86-3E63CC76CC0F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B36A9004-2CA5-4B32-8190-E1E0849917F5}"
+ProjectSection(SolutionItems) = preProject
+	appveyor.yml = appveyor.yml
+	build\Analyzers.ruleset = build\Analyzers.ruleset
+	build\Autofac.Build.psd1 = build\Autofac.Build.psd1
+	build\Autofac.Build.psm1 = build\Autofac.Build.psm1
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{D01DE0AC-D0D7-42BA-987E-2FEB95A3CAE3}"
+ProjectSection(SolutionItems) = preProject
+	.editorconfig = .editorconfig
+	.gitattributes = .gitattributes
+	.gitignore = .gitignore
+	appveyor.yml = appveyor.yml
+	global.json = global.json
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -8,9 +8,8 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <Description>ASP.NET SignalR 2 Integration for Autofac</Description>
     <Copyright>Copyright © 2014 Autofac Contributors</Copyright>
-    <Version>6.0.0.0</Version>
-    <AssemblyVersion>6.0.0.0</AssemblyVersion>
-    <FileVersion>6.0.0.0</FileVersion>
+    <!-- VersionPrefix patched by AppVeyor -->
+    <VersionPrefix>0.0.1</VersionPrefix>
     <DocumentationFile>bin\$(Configuration)\Autofac.Integration.SignalR.xml</DocumentationFile>
     <CodeAnalysisRuleSet>..\..\Full.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
