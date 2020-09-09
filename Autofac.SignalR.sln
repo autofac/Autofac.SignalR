@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Integration.SignalR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Integration.SignalR.Test", "test\Autofac.Integration.SignalR.Test\Autofac.Integration.SignalR.Test.csproj", "{C2B5131B-97A1-44D1-9378-0BF3CA3E9513}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6801E546-41B1-4F4B-93C8-CFD09D300811}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3542D6EC-8CC0-481E-AB86-3E63CC76CC0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CCC12CB7-6753-4772-9B04-83A0B2554991} = {6801E546-41B1-4F4B-93C8-CFD09D300811}
+		{C2B5131B-97A1-44D1-9378-0BF3CA3E9513} = {3542D6EC-8CC0-481E-AB86-3E63CC76CC0F}
 	EndGlobalSection
 EndGlobal
