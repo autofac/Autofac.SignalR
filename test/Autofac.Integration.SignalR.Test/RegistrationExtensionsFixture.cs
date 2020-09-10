@@ -27,8 +27,9 @@ namespace Autofac.Integration.SignalR.Test
             var container = builder.Build();
 
             var service = new TypedService(typeof(TestHub));
-            container.ComponentRegistry.TryGetRegistration(service, out IComponentRegistration registration);
+            container.ComponentRegistry.TryGetRegistration(service, out var registration);
 
+            Assert.NotNull(registration);
             Assert.Equal(InstanceOwnership.ExternallyOwned, registration.Ownership);
         }
 
