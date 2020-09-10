@@ -46,24 +46,18 @@ namespace Autofac.Integration.SignalR
         /// </exception>
         public AutofacDependencyResolver(ILifetimeScope lifetimeScope)
         {
-            _lifetimeScope = lifetimeScope ?? throw new ArgumentNullException("lifetimeScope");
+            _lifetimeScope = lifetimeScope ?? throw new ArgumentNullException(nameof(lifetimeScope));
         }
 
         /// <summary>
         /// Gets the Autofac implementation of the dependency resolver.
         /// </summary>
-        public static AutofacDependencyResolver Current
-        {
-            get { return GlobalHost.DependencyResolver as AutofacDependencyResolver; }
-        }
+        public static AutofacDependencyResolver Current => GlobalHost.DependencyResolver as AutofacDependencyResolver;
 
         /// <summary>
         /// Gets the <see cref="ILifetimeScope"/> that was provided to the constructor.
         /// </summary>
-        public ILifetimeScope LifetimeScope
-        {
-            get { return _lifetimeScope; }
-        }
+        public ILifetimeScope LifetimeScope => _lifetimeScope;
 
         /// <summary>
         /// Get a single instance of a service.

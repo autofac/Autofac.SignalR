@@ -18,15 +18,21 @@
     <PackageProjectUrl>https://autofac.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/autofac/Autofac.SignalR</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
-    <PackageIconUrl>https://cloud.githubusercontent.com/assets/1156571/13684110/16b8f152-e6bf-11e5-84ae-22c66c6d351a.png</PackageIconUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>Release notes are at https://github.com/autofac/Autofac.SignalR/releases</PackageReleaseNotes>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\build\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\CodeAnalysisDictionary.xml">
       <Link>CodeAnalysisDictionary.xml</Link>
     </CodeAnalysisDictionary>
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Autofac" Version="[5.0.0, 7.0.0)" />
     <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.1.1" />
