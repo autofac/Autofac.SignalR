@@ -26,6 +26,7 @@ ProjectSection(SolutionItems) = preProject
 	.gitignore = .gitignore
 	appveyor.yml = appveyor.yml
 	global.json = global.json
+	NuGet.Config = NuGet.Config
 EndProjectSection
 EndProject
 Global
