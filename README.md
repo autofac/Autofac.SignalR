@@ -2,7 +2,7 @@
 
 SignalR integration for [Autofac](https://autofac.org).
 
-[![Build status](https://ci.appveyor.com/api/projects/status/b90fy9gig8jxcq2g?svg=true)](https://ci.appveyor.com/project/Autofac/autofac-signalr)
+[![Build status](https://ci.appveyor.com/api/projects/status/b90fy9gig8jxcq2g?svg=true)](https://ci.appveyor.com/project/Autofac/autofac-signalr) [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/autofac/Autofac.SignalR)
 
 Please file issues and pull requests for this package in this repository rather than in the Autofac core repo.
 
