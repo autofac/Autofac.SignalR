@@ -1,7 +1,9 @@
-﻿using System.Reflection;
+﻿// Copyright (c) Autofac Project. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System.Reflection;
 using Autofac.Core;
 using Microsoft.AspNet.SignalR;
-using Xunit;
 
 namespace Autofac.Integration.SignalR.Test
 {
@@ -57,13 +59,13 @@ namespace Autofac.Integration.SignalR.Test
 
             Assert.Equal(InstanceOwnership.ExternallyOwned, registration.Ownership);
         }
-    }
 
-    public class TestHub : Hub
-    {
-    }
+        private class TestHub : Hub
+        {
+        }
 
-    public class TestConnection : PersistentConnection
-    {
+        private class TestConnection : PersistentConnection
+        {
+        }
     }
 }

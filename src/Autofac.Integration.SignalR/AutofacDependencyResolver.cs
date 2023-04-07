@@ -1,31 +1,6 @@
-﻿// This software is part of the Autofac IoC container
-// Copyright © 2013 Autofac Contributors
-// https://autofac.org
-//
-// Permission is hereby granted, free of charge, to any person
-// obtaining a copy of this software and associated documentation
-// files (the "Software"), to deal in the Software without
-// restriction, including without limitation the rights to use,
-// copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following
-// conditions:
-//
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-// OTHER DEALINGS IN THE SOFTWARE.
+﻿// Copyright (c) Autofac Project. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNet.SignalR;
 
 namespace Autofac.Integration.SignalR
@@ -35,8 +10,6 @@ namespace Autofac.Integration.SignalR
     /// </summary>
     public class AutofacDependencyResolver : DefaultDependencyResolver
     {
-        readonly ILifetimeScope _lifetimeScope;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AutofacDependencyResolver" /> class.
         /// </summary>
@@ -46,18 +19,18 @@ namespace Autofac.Integration.SignalR
         /// </exception>
         public AutofacDependencyResolver(ILifetimeScope lifetimeScope)
         {
-            _lifetimeScope = lifetimeScope ?? throw new ArgumentNullException(nameof(lifetimeScope));
+            LifetimeScope = lifetimeScope ?? throw new ArgumentNullException(nameof(lifetimeScope));
         }
 
         /// <summary>
         /// Gets the Autofac implementation of the dependency resolver.
         /// </summary>
-        public static AutofacDependencyResolver Current => GlobalHost.DependencyResolver as AutofacDependencyResolver;
+        public static AutofacDependencyResolver? Current => GlobalHost.DependencyResolver as AutofacDependencyResolver;
 
         /// <summary>
         /// Gets the <see cref="ILifetimeScope"/> that was provided to the constructor.
         /// </summary>
-        public ILifetimeScope LifetimeScope => _lifetimeScope;
+        public ILifetimeScope LifetimeScope { get; }
 
         /// <summary>
         /// Get a single instance of a service.
@@ -66,7 +39,7 @@ namespace Autofac.Integration.SignalR
         /// <returns>The single instance if resolved; otherwise, <c>null</c>.</returns>
         public override object GetService(Type serviceType)
         {
-            return _lifetimeScope.ResolveOptional(serviceType) ?? base.GetService(serviceType);
+            return LifetimeScope.ResolveOptional(serviceType) ?? base.GetService(serviceType);
         }
 
         /// <summary>
@@ -77,7 +50,7 @@ namespace Autofac.Integration.SignalR
         public override IEnumerable<object> GetServices(Type serviceType)
         {
             var enumerableServiceType = typeof(IEnumerable<>).MakeGenericType(serviceType);
-            var instance = (IEnumerable<object>)_lifetimeScope.Resolve(enumerableServiceType);
+            var instance = (IEnumerable<object>)LifetimeScope.Resolve(enumerableServiceType);
             return instance.Any() ? instance : base.GetServices(serviceType);
         }
     }
