@@ -1,40 +1,69 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\Autofac.snk</AssemblyOriginatorKeyFile>
-    <TargetFramework>net472</TargetFramework>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
-    <AssemblyTitle>Autofac.Integration.SignalR</AssemblyTitle>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <Description>ASP.NET SignalR 2 Integration for Autofac</Description>
-    <Copyright>Copyright © 2014 Autofac Contributors</Copyright>
     <!-- VersionPrefix patched by AppVeyor -->
     <VersionPrefix>0.0.1</VersionPrefix>
-    <DocumentationFile>bin\$(Configuration)\Autofac.Integration.SignalR.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\..\Full.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <Title>Autofac ASP.NET SignalR 2 Integration</Title>
+    <!-- Assembly metadata -->
+    <AssemblyName>Autofac.Integration.SignalR</AssemblyName>
+    <AssemblyTitle>Autofac.Integration.SignalR</AssemblyTitle>
+    <Description>ASP.NET SignalR 2 Integration for Autofac</Description>
+    <Copyright>Copyright © 2014 Autofac Contributors</Copyright>
+    <Authors>Autofac Contributors</Authors>
+    <Company>Autofac</Company>
+    <Product>Autofac</Product>
+    <AssemblyOriginatorKeyFile>../../Autofac.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <!-- Frameworks and language features -->
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <CodeAnalysisRuleSet>../../build/Analyzers.ruleset</CodeAnalysisRuleSet>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Packaging -->
     <PackageId>Autofac.SignalR2</PackageId>
-    <PackageProjectUrl>https://autofac.org</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/autofac/Autofac.SignalR</RepositoryUrl>
-    <RepositoryType>github</RepositoryType>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>autofac;di;ioc;dependencyinjection</PackageTags>
     <PackageReleaseNotes>Release notes are at https://github.com/autofac/Autofac.SignalR/releases</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://autofac.org</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/autofac/Autofac.SignalR</RepositoryUrl>
+    <ContinuousIntegrationBuild Condition="'$(CI)' != '' ">true</ContinuousIntegrationBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedAllSources>true</EmbedAllSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
+    <Using Include="System.Diagnostics.CodeAnalysis" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\build\icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\CodeAnalysisDictionary.xml">
-      <Link>CodeAnalysisDictionary.xml</Link>
-    </CodeAnalysisDictionary>
+    <AdditionalFiles Include="..\..\build\stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="[6.0.0, 7.0.0)" />
-    <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.1" />
+    <PackageReference Include="Autofac" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.3" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" Condition="Exists('$(MSBuildThisFileDirectory)../../.git')">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>
