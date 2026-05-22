@@ -99,7 +99,7 @@ public class AutofacDependencyResolverFixture
     public void CanOverrideDefaultServices()
     {
         var builder = new ContainerBuilder();
-        var messageBus = new Mock<IMessageBus>().Object;
+        var messageBus = Substitute.For<IMessageBus>();
         builder.RegisterInstance(messageBus);
         var resolver = new AutofacDependencyResolver(builder.Build());
 
