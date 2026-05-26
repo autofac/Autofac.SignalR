@@ -55,7 +55,7 @@ public class RegistrationExtensionsFixture
         var container = builder.Build();
 
         var service = new TypedService(typeof(TestConnection));
-        container.ComponentRegistry.TryGetRegistration(service, out IComponentRegistration registration);
+        container.ComponentRegistry.TryGetRegistration(service, out var registration);
 
         Assert.Equal(InstanceOwnership.ExternallyOwned, registration.Ownership);
     }

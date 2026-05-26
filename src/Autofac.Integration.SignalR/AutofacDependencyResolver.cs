@@ -30,7 +30,10 @@ public class AutofacDependencyResolver : DefaultDependencyResolver
     /// <summary>
     /// Gets the <see cref="ILifetimeScope"/> that was provided to the constructor.
     /// </summary>
-    public ILifetimeScope LifetimeScope { get; }
+    public ILifetimeScope LifetimeScope
+    {
+        get;
+    }
 
     /// <summary>
     /// Get a single instance of a service.
