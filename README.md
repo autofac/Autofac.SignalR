@@ -2,11 +2,11 @@
 
 ASP.NET classic SignalR integration for [Autofac](https://autofac.org).
 
-[![Build status](https://github.com/autofac/Autofac.SignalR/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/autofac/Autofac.SignalR/actions/workflows/ci.yml)
+[![Build status](https://github.com/autofac/Autofac.SignalR/actions/workflows/main.yml/badge.svg)](https://github.com/autofac/Autofac.SignalR/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/Autofac/Autofac.SignalR/branch/develop/graph/badge.svg)](https://codecov.io/gh/Autofac/Autofac.SignalR) [![NuGet](https://img.shields.io/nuget/v/Autofac.SignalR.svg)](https://nuget.org/packages/Autofac.SignalR)
 
 Please file issues and pull requests for this package [in this repository](https://github.com/autofac/Autofac.SignalR/issues) rather than in the Autofac core repo.
 
-If you're working with ASP.NET Core, you want [Autofac.Extensions.DependencyInjection](https://www.nuget.org/packages/Autofac.Extensions.DependencyInjection), not this package.
+**If you're working with ASP.NET Core, you want [Autofac.Extensions.DependencyInjection](https://www.nuget.org/packages/Autofac.Extensions.DependencyInjection), not this package.**
 
 - [Documentation](https://autofac.readthedocs.io/en/latest/integration/signalr.html)
 - [NuGet](https://www.nuget.org/packages/Autofac.SignalR2/)
@@ -17,7 +17,7 @@ If you're working with ASP.NET Core, you want [Autofac.Extensions.DependencyInje
 
 To get Autofac integrated with SignalR you need to reference the SignalR integration NuGet package, register your hubs, and set the dependency resolver.
 
-```c#
+```csharp
 protected void Application_Start()
 {
   var builder = new ContainerBuilder();
