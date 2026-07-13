@@ -23,7 +23,7 @@ public class AutofacDependencyResolverFixture
     public void NullLifetimeScopeThrowsException()
     {
         var exception = Assert.Throws<ArgumentNullException>(
-            () => new AutofacDependencyResolver(null));
+            () => new AutofacDependencyResolver(null!));
         Assert.Equal("lifetimeScope", exception.ParamName);
     }
 
